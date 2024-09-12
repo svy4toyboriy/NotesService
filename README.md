@@ -28,7 +28,7 @@ curl -X POST http://localhost:8080/notes -H "Content-Type: application/json" -d 
 }
 ```
 
-
+  
 ```shell
 curl -X POST http://localhost:8080/notes -H "Content-Type: application/json" -d "{\"content\":\"Hi, Sports. It's rainy outside\"}"
 ```
