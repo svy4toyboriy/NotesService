@@ -25,7 +25,7 @@ func Dial(cfg *config.Config) (*sql.DB, error) {
 	createTableQuery := `
 	CREATE TABLE IF NOT EXISTS notes (
 		id SERIAL PRIMARY KEY,
-		content VARCHAR(64) NOT NULL
+		content TEXT NOT NULL
 	);`
 
 	_, err = db.Exec(createTableQuery)
