@@ -28,6 +28,7 @@ curl -X POST http://localhost:8080/notes -H "Content-Type: application/json" -d 
 }
 ```
 
+
 ```shell
 curl -X POST http://localhost:8080/notes -H "Content-Type: application/json" -d "{\"content\":\"Hi, Sports. It's rainy outside\"}"
 ```
@@ -38,6 +39,7 @@ curl -X POST http://localhost:8080/notes -H "Content-Type: application/json" -d 
 }
 ```
 
+
 ```shell
 curl -X POST http://localhost:8080/notes -H "Content-Type: application/json" -d "{\"content\":\"Gnabry's better than Messi\"}"
 ```
@@ -47,6 +49,7 @@ curl -X POST http://localhost:8080/notes -H "Content-Type: application/json" -d 
   "id": 3
 }
 ```
+
 
 ```shell
 curl -X POST http://localhost:8080/notes -H "Content-Type: application/json" -d "{\"content\":\"Earth's population = 7 million people\"}"
