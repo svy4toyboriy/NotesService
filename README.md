@@ -28,7 +28,7 @@ curl -X POST http://localhost:8080/notes -H "Content-Type: application/json" -d 
 }
 ```
 
-  
+
 ```shell
 curl -X POST http://localhost:8080/notes -H "Content-Type: application/json" -d "{\"content\":\"Hi, Sports. It's rainy outside\"}"
 ```
@@ -72,6 +72,7 @@ curl -X DELETE http://localhost:8080/notes/2
   "status": "deleted"
 }
 ```
+
 
 ```shell
 curl -X DELETE http://localhost:8080/notes/4
