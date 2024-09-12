@@ -15,6 +15,7 @@ type Server struct {
 	db      *sql.DB
 }
 
+// Init возвращает новый экземпляр сервера
 func Init(ctx context.Context, config *config.Config, db *sql.DB) *Server {
 	s := &Server{
 		context: ctx,
@@ -25,6 +26,7 @@ func Init(ctx context.Context, config *config.Config, db *sql.DB) *Server {
 	return s
 }
 
+// respond конвертирует данные в JSON и отправляет клиенту
 func (s *Server) respond(w http.ResponseWriter, r *http.Request, data interface{}, status int) {
 	w.Header().Add("Content-Type", "application/json")
 	w.WriteHeader(status)
@@ -36,6 +38,7 @@ func (s *Server) respond(w http.ResponseWriter, r *http.Request, data interface{
 	}
 }
 
+// error отправляет { "error": ... } клиенту
 func (s *Server) error(w http.ResponseWriter, r *http.Request, err error, status int) {
 	w.Header().Add("Content-Type", "applications/json")
 	w.WriteHeader(status)

@@ -7,6 +7,7 @@ import (
 	_ "github.com/lib/pq"
 )
 
+// Dial создает новое подключение к БД
 func Dial(cfg *config.Config) (*sql.DB, error) {
 	connStr := fmt.Sprintf("postgres://%s:%s@%s/%s?sslmode=disable",
 		cfg.PgUser, cfg.PgPassword, cfg.PgAddr, cfg.PgDb)

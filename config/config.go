@@ -15,6 +15,7 @@ type Config struct {
 	PgPassword string
 }
 
+// Get читает из файла переменных среды
 func Get() *Config {
 	err := godotenv.Load(".env")
 	if err != nil {

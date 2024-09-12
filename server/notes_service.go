@@ -8,11 +8,16 @@ import (
 	"strconv"
 )
 
+// NotesPost Обрабатывает POST запросы
 func (s *Server) NotesPost(w http.ResponseWriter, r *http.Request) {
-
 	var note model.Note
 	if err := s.decode(w, r, &note); err != nil {
 		s.error(w, r, err, http.StatusBadRequest)
+		return
+	}
+
+	if note.Content == "" {
+		http.Error(w, "Content field is required", http.StatusBadRequest)
 		return
 	}
 
@@ -31,6 +36,7 @@ func (s *Server) NotesPost(w http.ResponseWriter, r *http.Request) {
 	s.respond(w, r, newNoteId, http.StatusOK)
 }
 
+// NotesGet Обрабатывает GET запросы
 func (s *Server) NotesGet(w http.ResponseWriter, r *http.Request) {
 	rows, err := s.db.Query("SELECT id, content FROM notes")
 	if err != nil {
@@ -55,6 +61,7 @@ func (s *Server) NotesGet(w http.ResponseWriter, r *http.Request) {
 	s.respond(w, r, notes, http.StatusOK)
 }
 
+// NotesDelete Обрабатывает DELETE запросы
 func (s *Server) NotesDelete(w http.ResponseWriter, r *http.Request) {
 	re := regexp.MustCompile(`^/notes/(\d+)$`)
 	matches := re.FindStringSubmatch(r.URL.Path)

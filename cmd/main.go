@@ -22,13 +22,16 @@ func run() error {
 
 	cfg := config.Get()
 
+	// Подключение к Postgres
 	pgDB, err := db.Dial(cfg)
 	if err != nil {
 		log.Fatal(err)
 	}
 
+	// Создание экземпляра сервера
 	s := server.Init(ctx, cfg, pgDB)
 
+	// Запуск http-сервера
 	addr := ":8080"
 	httpServer := &http.Server{
 		Addr:         addr,
